@@ -24,7 +24,8 @@ export default {
     placement: {
       type: String,
       default: 'top'
-    }
+    },
+    data: {default: ''}
   },
   data () {
     return {
@@ -32,7 +33,7 @@ export default {
         top: 0,
         left: 0
       },
-      show: false
+      show: false,
     }
   },
   methods: {
@@ -64,6 +65,8 @@ export default {
         }
         popover.style.top = this.position.top + 'px'
         popover.style.left = this.position.left + 'px'
+
+        this.$dispatch('shown', this.data, popover);
       }, 0)
     }
   },
